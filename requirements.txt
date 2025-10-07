@@ -1,0 +1,23 @@
+einops
+hydra-core
+# paddlesci
+pre_commit
+scipy
+
+# graph network
+warp-lang
+
+# output vtk
+vtk
+meshio
+pymeshlab
+
+# log
+wandb
+tensorboardX
+
+# web viewer
+xvfbwrapper
+pyvista
+stpyvista
+streamlit

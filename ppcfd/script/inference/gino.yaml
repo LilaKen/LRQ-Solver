@@ -1,0 +1,76 @@
+hydra:
+  run:
+    # dynamic output directory according to running time and override name
+    dir: outputs_gino/${now:%Y-%m-%d-%H-%M-%S}
+  job:
+    name: ${mode} # name of logfile
+    chdir: false # keep current working direcotry unchaned
+  sweep:
+    # output directory for multirun
+    dir: ${hydra.run.dir}
+    subdir: ./
+
+# setting
+mode: "test"
+checkpoint: "../gino_checkpoint/p_wss_1_3_DrivAer_299_0527_new"
+resume_ep: 0
+log: "log"
+logger_types: "tensorboard"
+seed: 0
+no_fabric: false  # not used
+device: 0
+output_dir: ${hydra:run.dir}
+save_freq: 10
+
+# Model
+model: "GNOFNOGNOAhmed"
+subsample_train: 1
+subsample_eval: 1
+weighted_kernel: false
+embed_dim: 32
+hidden_channels: [64, 64]
+in_channels: 2
+# out_channels: [1, 3] # wss + pressure
+fno_modes: [32, 32, 32]
+fno_hidden_channels: 64
+fno_out_channels: 64
+max_in_points: 5000
+sdf_spatial_resolution: [64, 64, 64] # or [70, 70, 70]
+reshape: False
+
+
+# eval
+# n_test_num: 1 # 51
+test_plot_interval: true
+
+# infer
+infer_path: null
+
+# run
+run_name: "GNOFNOGNO_all"
+project_name: "car-body"
+
+# custom settings for debugging for "drivaer"
+lr: 0.0005
+radius_in: 0.045
+radius_out: 0.045
+num_epochs: 10 # 300
+n_train_num: 1 # 2772 # 2776-"0978/1034/2860/3641"
+n_val_num: 1 # 595
+n_test_num: 10 # 595
+
+
+# DataSet
+data_module: "drivaer"
+enable_dp: true
+only_save_sdf: false
+lazy_loading: true
+batch_size: 1
+data_path: "./data_drivaer/"
+out_channels: [1,3] # pressure+wss
+out_keys: ["pressure","wss"]
+
+# Physics
+mass_density: 1.0
+flow_speed: 30.0
+simulation_type: "AeroDynamic"

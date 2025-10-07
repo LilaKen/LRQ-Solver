@@ -1,0 +1,98 @@
+mode: "train"
+
+hydra:
+  run:
+    dir: output/lrqsolver_drivaerpp/${now:%Y-%m-%d-%H-%M-%S}
+  job:
+    name: ${mode}
+    chdir: false
+  sweep:
+    dir: ${hydra.run.dir}
+    subdir: ./
+
+# Setting
+checkpoint: null
+seed: 0
+output_dir: ${hydra:run.dir}
+
+# Model
+model:
+  _target_: ppcfd.networks.LRQSolver
+  in_dim: 67
+  out_dim: 1
+  out_num: 1
+  hidden_channel: 256
+  n_heads: 2
+  head_dim: 16
+  seqlen: 16
+  q_query_dim: 64
+  q_input_dim: 23
+  q_num_query: 10
+  q_num_heads: 2
+  q_head_dim: 8
+  q_ff_dim: 16
+  pseudo_integration: true
+  remove_channel_dim: true
+
+
+# Run
+model_name: "LRQSolver"
+project_name: "DNNFluid-Car"
+
+
+# Hyper-parameters
+lr: 0.0001
+last_lr: null
+weight_decay: 1e-5
+lr_schedular: "CosineAnnealingLR"
+loss_fn: "MSE"
+num_epochs: 100
+enable_dp: false
+enable_mp: false
+enable_pp: false
+only_save_sdf: false
+lazy_loading: true
+cd_finetune: false
+car_loss: true
+val_freq: 1
+cd_loss_weight: 1.0
+enable_cinn: false
+enable_profiler: false
+
+
+# DataSet
+data_module:
+  _target_: ppcfd.data.DrivAerNet_Aug_DataModule
+  data_dir: "./data/drivaerpp/paddle_tensor/"
+  n_train_num: 5361
+  n_test_num: 1
+  n_val_num: 1148
+  train_sample_number: 40000
+  inputs_key: ["vertices"]
+  targets_key: ["Cd"]
+  weight_keys: ["weight_keys"]
+  subset_dir: "./data/drivaerpp/subset_dir/"
+  train_ids_file: "train_design_ids.txt"
+  test_ids_file: "test_design_ids.txt"
+  val_ids_file: "val_design_ids.txt"
+  csv_file: "./data/drivaerpp/DrivAerNetPlusPlus_Drag_8k.csv"
+  area_file: "./data/drivaerpp/DrivAerNetPlusPlus_CarDesign_Areas.csv"
+  para_file: "./data/drivaerpp/DrivAerNet_ParametricData.csv"
+  num_points: 100000
+  transform: null
+  z_score: ""
+
+num_workers: 0
+batch_size: 4
+test_batch_size: 12
+out_channels: [1]
+out_keys: ["Cd"]
+input_filename: "test.ply"
+output_filename: "test.vtk"
+large_stl: false
+
+
+# Physics
+mass_density: 1.0
+flow_speed: 30.0
+simulation_type: "AeroDynamic"
