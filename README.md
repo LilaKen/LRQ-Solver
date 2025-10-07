@@ -17,38 +17,40 @@
 ---
 
 ## 📁 Repository Structure
+
 LRQ-Solver/
-├── configs/ # Training & model configuration files
-├── ppcfd/ # Core solver modules & physics-integrated layers
-├── main_drivaer.py # Entry point for DrivAer++ experiments
-├── main_beam.py # Entry point for 3D Beam experiments
-├── run_LRQSOLVER_drivaer.sh # Shell script to run DrivAer++ pipeline
-├── run_LRQSOLVER_beam.sh # Shell script to run 3D Beam pipeline
-├── visual_beam.py # Visualization utilities for beam results
-├── drag_coefficient.py # Post-processing for aerodynamic metrics
-├── requirements.txt # Python dependencies
+├── configs/                # Training & model configuration files
+├── ppcfd/                  # Core solver modules & physics-integrated layers
+├── main_drivaer.py         # Entry point for DrivAer++ experiments
+├── main_beam.py            # Entry point for 3D Beam experiments
+├── run_LRQSOLVER_drivaer.sh# Shell script to run DrivAer++ pipeline
+├── run_LRQSOLVER_beam.sh   # Shell script to run 3D Beam pipeline
+├── visual_beam.py          # Visualization utilities for beam results
+├── drag_coefficient.py     # Post-processing for aerodynamic metrics
+├── requirements.txt        # Python dependencies
 ├── .pre-commit-config.yaml # Pre-commit hooks for code quality
-└── README.md # You are here!
+└── README.md               # You are here!
 
 ## ⚙️ Quick Start
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/LilaKen/LRQ-Solver.git
+   git clone https://github.com/LilaKen/LRQ-Solver.git  
    cd LRQ-Solver
-   
-2. **Install dependencies**
-   pip install -r requirements.txt
 
-3. **Run an experiment**
+Install dependencies
+pip install -r requirements.txt
 
-  # For DrivAer++ dataset
-  bash run_LRQSOLVER_drivaer.sh
-  
-  # For 3D Beam dataset
-  bash run_LRQSOLVER_beam.sh
-  
-4. V**isualize results (e.g., beam)**
-  python visual_beam.py --checkpoint ./outputs/beam/model.pth
+Run an experiment
+# For DrivAer++ dataset
+bash run_LRQSOLVER_drivaer.sh
+
+# For 3D Beam dataset
+bash run_LRQSOLVER_beam.sh
+
+Visualize results (e.g., beam)
+python visual_beam.py --checkpoint ./outputs/beam/model.pth
+
 
 If you find LRQ-Solver useful in your research, please consider citing our work:
+
