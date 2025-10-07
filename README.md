@@ -1,74 +1,54 @@
-# News:
+# 🚀 LRQ-Solver: A Transformer-Based Neural Operator for Fast and Accurate large-scale 3D PDEs
 
-[飞桨采用NVIDIA Modulus打造汽车风阻预测模型DNNFluid-Car](https://mp.weixin.qq.com/s/pxmOpfwe0DXCon4uGG93uQ)
+> Fast, accurate, and scalable simulations of industrial-grade 3D geometries — powered by physics-aware learning and linear-complexity attention.
 
-## 常见报错汇总
-https://github.com/wangguan1995/DNNFluid-Car/issues/71
+**LRQ-Solver** is a deep learning framework designed to solve large-scale partial differential equations (PDEs) on complex 3D geometries with unprecedented efficiency. Built upon two core innovations:
 
-# Step 1 : 快速安装
+- **PCLM (Physics-Coupled Learning Module)**: Embeds physical consistency into the model architecture, enabling robust generalization across unseen design configurations.
+- **LR-QA (Low-Rank Query Attention)**: Reduces attention complexity from $O(N^2)$ to $O(NC^2 + C^3)$ via covariance decomposition, enabling training on up to **2 million points** on a single GPU.
 
-## 显卡驱动要求cuda 12.3
+✅ **Results**:
+- **38.9% error reduction** on DrivAer++ dataset  
+- **28.76% error reduction** on 3D Beam dataset  
+- **Up to 50× training speedup** over baseline methods  
 
-方法一 Linux离线docker安装
+🔗 Code for reproducing state-of-the-art multi-configuration physics simulations.
 
-linux端文件夹没有权限（报错：Permission Denied）, 需要chmod 777 -R 文件名
-```shell
-wget https://dataset.bj.bcebos.com/PaddleScience/DNNFluid-Car/docker_image/dnnfluid-car_v1.0.tar
-docker load -i dnnfluid-car_v1.0.tar
-```
+---
 
-方法二 Linux联网安装
-```shell
-pip install --pre paddlepaddle-gpu -i https://www.paddlepaddle.org.cn/packages/nightly/cu123/
-pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
-pip install https://dataset.bj.bcebos.com/PaddleScience/DNNFluid-Car/open3d-0.18.0%2Bd31268ae-cp310-cp310-manylinux_2_31_x86_64.whl
-apt-get update
-apt-get install xvfb
-```
+## 📁 Repository Structure
+LRQ-Solver/
+├── configs/ # Training & model configuration files
+├── ppcfd/ # Core solver modules & physics-integrated layers
+├── main_drivaer.py # Entry point for DrivAer++ experiments
+├── main_beam.py # Entry point for 3D Beam experiments
+├── run_LRQSOLVER_drivaer.sh # Shell script to run DrivAer++ pipeline
+├── run_LRQSOLVER_beam.sh # Shell script to run 3D Beam pipeline
+├── visual_beam.py # Visualization utilities for beam results
+├── drag_coefficient.py # Post-processing for aerodynamic metrics
+├── requirements.txt # Python dependencies
+├── .pre-commit-config.yaml # Pre-commit hooks for code quality
+└── README.md # You are here!
 
-# Step 2 : 下载代码、测试集，下载Checkpoints，以及验证安装
-```
-# wget https://dataset.bj.bcebos.com/PaddleScience/DNNFluid-Car/docker_image/data_checkpoint_0519.tar
+## ⚙️ Quick Start
 
-# 执行自测（每次提交代码必做）
-./ppcfd/script/test/test.sh
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/LilaKen/LRQ-Solver.git
+   cd LRQ-Solver
+   
+2. **Install dependencies**
+   pip install -r requirements.txt
 
-# Step 3 : 调整和训练模型
+3. **Run an experiment**
 
-模型目录为src/networks
-| 模型 | DrivAer L2 error | Ahmed L2 error | 已接入测试 | 模型论文 |合入PR|
-|:---------------------:|:--------:|:-:|:------------:|:------------:|:------------:|
-|  GINO                |     0.156  ||      ✅       ||
-|  Transolver          |     0.14   ||      ✅       ||
-|  UNet3D              |     0.23   ||      ✅       ||
-|  FigConvnet          |     0.16   ||      🚧       |[PR 55](https://github.com/wangguan1995/DNNFluid-Car/pull/55)|
-|  LNO                 |     🚧     ||      🚧       ||
-|  XAeronet            |     🚧     ||      🚧       ||
-|  Domino              |     🚧     ||      🚧       ||
+  # For DrivAer++ dataset
+  bash run_LRQSOLVER_drivaer.sh
+  
+  # For 3D Beam dataset
+  bash run_LRQSOLVER_beam.sh
+  
+4. V**isualize results (e.g., beam)**
+  python visual_beam.py --checkpoint ./outputs/beam/model.pth
 
-# Step 4 : 兼容工业数据集
-
-数据集代码目录为src/data
-
-数据集下载脚本目录为src/script/download
-
-| 工业数据集 | 开源 | dataset可用 | 数据下载地址 |
-|:---------------------:|:--------:|:------------:|:------------:|
-|  建筑风场数据                |    🚧     |      🚧       ||
-|  3D飞行器数据集              |    ✅     |      🚧       ||
-|  Arteon_2021               |    ✅     |      🚧       ||
-|  DrivAerML                 |    ✅     |      ✅       |[stl_part1](https://dataset.bj.bcebos.com/PaddleScience/DNNFluid-Car/DrivAerML/part1_1-50.tar) 、[cd](https://dataset.bj.bcebos.com/PaddleScience/DNNFluid-Car/DrivAerML/drivaerml_csv.tar)|
-|  DrivAerNet                |    ✅     |      ✅       ||
-|  DrivAerNet++              |    ✅     |      ✅       |[points](https://dataset.bj.bcebos.com/PaddleScience/DNNFluid-Car/DrivAer%2B%2B/DrivAer%2B%2B_Points.tar)、[cd](https://dataset.bj.bcebos.com/PaddleScience/DNNFluid-Car/DrivAer%2B%2B/DrivAerNetPlusPlus_Drag_8k.csv)|
-|  Ahmed                     |    ✅     |      ✅       ||
-|  ShapeNet-Car(未简化)       |    ✅     |      ✅       ||
-|  ShapeNet-Car(简化)         |    ✅     |      ✅       |[飞桨云](https://dataset.bj.bcebos.com/PaddleScience/2024%20Transolver/Car-Design-ShapeNetCar.tar)|
-
-# Step 5 : 可视化
-执行命令
-```shell
-python -m streamlit run ./ppcfd/web/viewer.py
-```
-![image](https://github.com/user-attachments/assets/d5c042c6-3925-4508-8836-24f4efed4cb3)
-
+If you find LRQ-Solver useful in your research, please consider citing our work:
