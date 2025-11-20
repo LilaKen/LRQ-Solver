@@ -49,25 +49,27 @@ LRQ-Solver/
 ## ⚙️ Quick Start
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/LilaKen/LRQ-Solver.git  
-   cd LRQ-Solver
+```bash
+git clone https://github.com/LilaKen/LRQ-Solver.git  
+cd LRQ-Solver
+```
 
 2. **Install dependencies**
-
-   `pip install -r requirements.txt`
+```bash
+pip install -r requirements.txt
+```
 
 3. **Run an experiment**
-   ```bash
-   #For DrivAer++ dataset
-   run_LRQSOLVER_drivaer.sh
-   
-   #For 3D Beam dataset
-   bash run_LRQSOLVER_beam.sh
-   
-   #Visualize results (e.g., beam)
-   python visual_beam.py --checkpoint ./outputs/beam/model.pth
-   ```
+```bash
+#For DrivAer++ dataset
+run_LRQSOLVER_drivaer.sh
+
+#For 3D Beam dataset
+bash run_LRQSOLVER_beam.sh
+
+#Visualize results (e.g., beam)
+python visual_beam.py --checkpoint ./outputs/beam/model.pth
+```
 
 If you find LRQ-Solver useful in your research, please consider citing our work:
 ```
