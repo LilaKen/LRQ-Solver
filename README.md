@@ -2,7 +2,7 @@
 
 > Fast, accurate, and scalable simulations of industrial-grade 3D geometries — powered by physics-aware learning and linear-complexity attention.
 
-Our Framework: [LRQ-Solver_v2.pdf](assets/LRQ-Solver_v2.pdf)
+![LRQ-Solver Framework](assets/LRQ-Solver_v2.png)
 
 **LRQ-Solver** is a deep learning framework designed to solve large-scale partial differential equations (PDEs) on complex 3D geometries with unprecedented efficiency. Built upon two core innovations:
 
