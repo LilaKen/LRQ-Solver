@@ -30,6 +30,7 @@ To download a specific file (for example README.md into a local folder named dir
 
 ## 📁 Repository Structure
 
+```text
 LRQ-Solver/
 ├── configs/                # Training & model configuration files
 ├── ppcfd/                  # Core solver modules & physics-integrated layers
@@ -42,6 +43,7 @@ LRQ-Solver/
 ├── requirements.txt        # Python dependencies
 ├── .pre-commit-config.yaml # Pre-commit hooks for code quality
 └── README.md               # You are here!
+```
 
 ## ⚙️ Quick Start
 
