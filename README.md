@@ -11,14 +11,11 @@
 
 ## 📁 Dataset
 Dataset link: [kenalin/drivaerpp](https://www.modelscope.cn/datasets/kenalin/drivaerpp)
-
-To download the full dataset:
 ```bash
+#To download the full dataset:
 modelscope download --dataset kenalin/drivaerpp
-```
 
-To download a specific file (for example README.md into a local folder named dir):
-```bash
+#To download a specific file (for example README.md into a local folder named dir):
 modelscope download --dataset kenalin/drivaerpp README.md --local dir
 ```
 
