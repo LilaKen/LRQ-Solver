@@ -58,18 +58,19 @@ LRQ-Solver/
    `pip install -r requirements.txt`
 
 3. **Run an experiment**
-
-   **For DrivAer++ dataset**
+   ```bash
+   #For DrivAer++ dataset
    
-   `bash run_LRQSOLVER_drivaer.sh`
+   run_LRQSOLVER_drivaer.sh
    
-   **For 3D Beam dataset**
+   #For 3D Beam dataset
    
-   `bash run_LRQSOLVER_beam.sh`
+   bash run_LRQSOLVER_beam.sh
    
-   **Visualize results (e.g., beam)**
+   #Visualize results (e.g., beam)
    
-   `python visual_beam.py --checkpoint ./outputs/beam/model.pth`
+   python visual_beam.py --checkpoint ./outputs/beam/model.pth
+   ```
 
 If you find LRQ-Solver useful in your research, please consider citing our work:
 ```
