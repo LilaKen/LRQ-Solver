@@ -9,7 +9,7 @@
 - **LR-QA (Low-Rank Query Attention)**: Reduces attention complexity from $O(N^2)$ to $O(NC^2 + C^3)$ via covariance decomposition, enabling training on up to **2 million points** on a single GPU.
 
 📁Point cloud data is now available
-Dataset link: https://www.modelscope.cn/datasets/kenalin/drivaerpp
+Dataset link: [kenalin/drivaerpp](https://www.modelscope.cn/datasets/kenalin/drivaerpp)
 
 To download the full dataset:
 
@@ -52,22 +52,23 @@ LRQ-Solver/
    git clone https://github.com/LilaKen/LRQ-Solver.git  
    cd LRQ-Solver
 
-Install dependencies
+2. **Install dependencies**
 
-`pip install -r requirements.txt`
+   `pip install -r requirements.txt`
 
-Run an experiment
-# For DrivAer++ dataset
+3. **Run an experiment**
 
-`bash run_LRQSOLVER_drivaer.sh`
-
-# For 3D Beam dataset
-
-`bash run_LRQSOLVER_beam.sh`
-
-Visualize results (e.g., beam)
-
-`python visual_beam.py --checkpoint ./outputs/beam/model.pth`
+   # For DrivAer++ dataset
+   
+   `bash run_LRQSOLVER_drivaer.sh`
+   
+   # For 3D Beam dataset
+   
+   `bash run_LRQSOLVER_beam.sh`
+   
+   Visualize results (e.g., beam)
+   
+   `python visual_beam.py --checkpoint ./outputs/beam/model.pth`
 
 
 If you find LRQ-Solver useful in your research, please consider citing our work:
