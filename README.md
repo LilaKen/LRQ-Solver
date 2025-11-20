@@ -9,16 +9,18 @@
 - **PCLM (Physics-Coupled Learning Module)**: Embeds physical consistency into the model architecture, enabling robust generalization across unseen design configurations.
 - **LR-QA (Low-Rank Query Attention)**: Reduces attention complexity from $O(N^2)$ to $O(NC^2 + C^3)$ via covariance decomposition, enabling training on up to **2 million points** on a single GPU.
 
-📁Point cloud data is now available
+## 📁 Dataset
 Dataset link: [kenalin/drivaerpp](https://www.modelscope.cn/datasets/kenalin/drivaerpp)
 
 To download the full dataset:
-
-`modelscope download --dataset kenalin/drivaerpp`
+```bash
+modelscope download --dataset kenalin/drivaerpp
+```
 
 To download a specific file (for example README.md into a local folder named dir):
-
-`modelscope download --dataset kenalin/drivaerpp README.md --local dir`
+```bash
+modelscope download --dataset kenalin/drivaerpp README.md --local dir
+```
 
 ✅ **Results**:
 - **38.9% error reduction** on DrivAer++ dataset  
