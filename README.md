@@ -12,9 +12,11 @@
 Dataset link: https://www.modelscope.cn/datasets/kenalin/drivaerpp
 
 To download the full dataset:
+
 `modelscope download --dataset kenalin/drivaerpp`
 
 To download a specific file (for example README.md into a local folder named dir):
+
 `modelscope download --dataset kenalin/drivaerpp README.md --local dir`
 
 ✅ **Results**:
@@ -49,17 +51,21 @@ LRQ-Solver/
    cd LRQ-Solver
 
 Install dependencies
-pip install -r requirements.txt
+
+`pip install -r requirements.txt`
 
 Run an experiment
 # For DrivAer++ dataset
-bash run_LRQSOLVER_drivaer.sh
+
+`bash run_LRQSOLVER_drivaer.sh`
 
 # For 3D Beam dataset
-bash run_LRQSOLVER_beam.sh
+
+`bash run_LRQSOLVER_beam.sh`
 
 Visualize results (e.g., beam)
-python visual_beam.py --checkpoint ./outputs/beam/model.pth
+
+`python visual_beam.py --checkpoint ./outputs/beam/model.pth`
 
 
 If you find LRQ-Solver useful in your research, please consider citing our work:
