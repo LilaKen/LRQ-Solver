@@ -12,12 +12,10 @@
 Dataset link: https://www.modelscope.cn/datasets/kenalin/drivaerpp
 
 To download the full dataset:
-```bash
-modelscope download --dataset kenalin/drivaerpp
+`modelscope download --dataset kenalin/drivaerpp`
 
 To download a specific file (for example README.md into a local folder named dir):
-```bash
-modelscope download --dataset kenalin/drivaerpp README.md --local dir
+`modelscope download --dataset kenalin/drivaerpp README.md --local dir`
 
 ✅ **Results**:
 - **38.9% error reduction** on DrivAer++ dataset  
