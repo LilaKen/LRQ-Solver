@@ -70,6 +70,13 @@ LRQ-Solver/
    
    `python visual_beam.py --checkpoint ./outputs/beam/model.pth`
 
-
 If you find LRQ-Solver useful in your research, please consider citing our work:
+
+## Acknowledgements
+
+We sincerely thank the following open-source projects for their valuable contributions to this work:
+
+- [PaddleScience](https://github.com/PaddlePaddle/PaddleScience) – Baidu’s scientific machine learning toolkit for physics-informed deep learning.
+- [DrivAerNet](https://github.com/Mohamedelrefaie/DrivAerNet) – The large-scale CFD dataset and benchmark from MIT.
+- [PaddleCFD](https://github.com/PaddlePaddle/PaddleCFD) – The PaddlePaddle-based framework for aerodynamic simulation and shape optimization.
 
