@@ -60,15 +60,12 @@ LRQ-Solver/
 3. **Run an experiment**
    ```bash
    #For DrivAer++ dataset
-   
    run_LRQSOLVER_drivaer.sh
    
    #For 3D Beam dataset
-   
    bash run_LRQSOLVER_beam.sh
    
    #Visualize results (e.g., beam)
-   
    python visual_beam.py --checkpoint ./outputs/beam/model.pth
    ```
 
@@ -80,6 +77,7 @@ If you find LRQ-Solver useful in your research, please consider citing our work:
   journal={arXiv preprint arXiv:2510.11636},
   year={2025}
 }
+```
 
 ## Acknowledgements
 
