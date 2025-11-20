@@ -71,6 +71,13 @@ LRQ-Solver/
    `python visual_beam.py --checkpoint ./outputs/beam/model.pth`
 
 If you find LRQ-Solver useful in your research, please consider citing our work:
+```
+@article{zeng2025lrq,
+  title={LRQ-Solver: A Transformer-Based Neural Operator for Fast and Accurate Solving of Large-scale 3D PDEs},
+  author={Zeng, Peijian and Wang, Guan and Gu, Haohao and Hu, Xiaoguang and Wang, Zhuowei and Yang, Aimin and Song, Xiaoyu and others},
+  journal={arXiv preprint arXiv:2510.11636},
+  year={2025}
+}
 
 ## Acknowledgements
 
