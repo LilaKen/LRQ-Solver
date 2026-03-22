@@ -368,7 +368,7 @@ class DrivAerNetPlusPlusDataset(paddle.io.Dataset):
         return vertices
 
     def _load_point_cloud(self, design_id: str):
-        load_path = os.path.join("/date2/ken/ppcfd_transformer-transformer/data/drivaerpp/paddle_tensor", f"{design_id}.paddle_tensor")
+        load_path = os.path.join("/mnt/date3/ken/LRQ-Solver/data/drivaerpp/paddle_tensor", f"{design_id}.paddle_tensor")
         load_path_npy = os.path.join(self.data_dir, f"{design_id.replace('DrivAer_', '')}.npy")
         if os.path.exists(load_path_npy) and os.path.getsize(load_path_npy) > 0:
             try:

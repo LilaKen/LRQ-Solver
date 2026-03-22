@@ -3,6 +3,7 @@ hydra-core
 # paddlesci
 pre_commit
 scipy
+scikit-learn
 
 # graph network
 warp-lang

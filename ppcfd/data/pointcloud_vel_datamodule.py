@@ -10,8 +10,8 @@ from vtk.util.numpy_support import vtk_to_numpy
 
 from ppcfd.data.base_datamodule import BaseDataModule
 from ppcfd.data.pointcloud_datamodule import load_mean_std
-from ppcfd.data.starccm_datamodule import get_centroids
-from ppcfd.data.starccm_datamodule import get_nodes
+# from ppcfd.data.starccm_datamodule import get_centroids
+# from ppcfd.data.starccm_datamodule import get_nodes
 
 
 def load_velocity(polydata):
