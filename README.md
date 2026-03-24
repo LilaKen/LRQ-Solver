@@ -10,13 +10,13 @@
 - **LR-QA (Low-Rank Query Attention)**: Reduces attention complexity from $O(N^2)$ to $O(NC^2 + C^3)$ via covariance decomposition, enabling training on up to **2 million points** on a single GPU.
 
 ## 📁 Dataset
-Dataset link: [kenalin/drivaerpp](https://www.modelscope.cn/datasets/kenalin/drivaerpp)
+Dataset link: [drivaerpp](https://www.modelscope.cn/datasets/*anonymous*/drivaerpp)
 ```bash
 #To download the full dataset:
-modelscope download --dataset kenalin/drivaerpp
+modelscope download --dataset *anonymous*/drivaerpp
 
 #To download a specific file (for example README.md into a local folder named dir):
-modelscope download --dataset kenalin/drivaerpp README.md --local dir
+modelscope download --dataset *anonymous*/drivaerpp README.md --local dir
 ```
 
 ## 📦 Model Weights
@@ -56,7 +56,7 @@ LRQ-Solver/
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/LilaKen/LRQ-Solver.git  
+git clone https://github.com/*anonymous*/LRQ-Solver.git  
 cd LRQ-Solver
 ```
 
@@ -71,7 +71,7 @@ pip install -r requirements.txt
 run_LRQSOLVER_drivaer.sh
 
 #For 3D Beam dataset
-bash run_LRQSOLVER_beam.sh
+bash run_LRQSolver_beam.sh
 
 #Visualize results (e.g., beam)
 python visual_beam.py --checkpoint ./outputs/beam/model.pth
@@ -79,10 +79,9 @@ python visual_beam.py --checkpoint ./outputs/beam/model.pth
 
 If you find LRQ-Solver useful in your research, please consider citing our work:
 ```
-@article{zeng2025lrq,
+@article{anonymous,
   title={LRQ-Solver: A Transformer-Based Neural Operator for Fast and Accurate Solving of Large-scale 3D PDEs},
-  author={Zeng, Peijian and Wang, Guan and Gu, Haohao and Hu, Xiaoguang and Wang, Zhuowei and Yang, Aimin and Song, Xiaoyu and others},
-  journal={arXiv preprint arXiv:2510.11636},
+  journal={arXiv preprint arXiv:*anonymous*},
   year={2025}
 }
 ```
@@ -91,7 +90,6 @@ If you find LRQ-Solver useful in your research, please consider citing our work:
 
 We sincerely thank the following open-source projects for their valuable contributions to this work:
 
-- [PaddleScience](https://github.com/PaddlePaddle/PaddleScience) – Baidu’s scientific machine learning toolkit for physics-informed deep learning.
+- [PaddleScience](https://github.com/PaddlePaddle/PaddleScience) – Baidu's scientific machine learning toolkit for physics-informed deep learning.
 - [DrivAerNet](https://github.com/Mohamedelrefaie/DrivAerNet) – The large-scale CFD dataset and benchmark from MIT.
 - [PaddleCFD](https://github.com/PaddlePaddle/PaddleCFD) – The PaddlePaddle-based framework for aerodynamic simulation and shape optimization.
-
