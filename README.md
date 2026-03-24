@@ -19,6 +19,13 @@ modelscope download --dataset kenalin/drivaerpp
 modelscope download --dataset kenalin/drivaerpp README.md --local dir
 ```
 
+## 📦 Model Weights
+
+Pre-trained model weights are available for download:
+
+- **LRQSolver_100000.zip**: Full model weights (百度网盘链接: https://pan.baidu.com/s/1ZghF4w8TU5hYhS4RV7Po6w 提取码: k8mg)
+- **LRQSolver_1024.zip**: Lightweight model weights (百度网盘链接: https://pan.baidu.com/s/1-NA_CSbUs8fukivIADyURg 提取码: qybq)
+
 ✅ **Results**:
 - **38.9% error reduction** on DrivAer++ dataset  
 - **28.76% error reduction** on 3D Beam dataset  
