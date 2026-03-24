@@ -10,13 +10,13 @@
 - **LR-QA (Low-Rank Query Attention)**: Reduces attention complexity from $O(N^2)$ to $O(NC^2 + C^3)$ via covariance decomposition, enabling training on up to **2 million points** on a single GPU.
 
 ## 📁 Dataset
-Dataset link: [drivaerpp](https://www.modelscope.cn/datasets/*anonymous*/drivaerpp)
+Dataset link: [kenalin/drivaerpp](https://www.modelscope.cn/datasets/kenalin/drivaerpp)
 ```bash
 #To download the full dataset:
-modelscope download --dataset *anonymous*/drivaerpp
+modelscope download --dataset kenalin/drivaerpp
 
 #To download a specific file (for example README.md into a local folder named dir):
-modelscope download --dataset *anonymous*/drivaerpp README.md --local dir
+modelscope download --dataset kenalin/drivaerpp README.md --local dir
 ```
 
 ## 📦 Model Weights
