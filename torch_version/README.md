@@ -1,0 +1,101 @@
+# 🚀 LRQ-Solver: A Transformer-Based Neural Operator for Fast and Accurate large-scale 3D PDEs
+
+> This `torch_version/` directory contains the PyTorch-only runnable subset of
+> the project. It intentionally excludes datasets, generated logs, checkpoints,
+> training output, `.venv/`, and Python cache files.
+>
+> The included run scripts resolve this directory automatically, then execute
+> from the parent project root so existing `./data/...` and `./output/...` paths
+> keep working.
+
+> Fast, accurate, and scalable simulations of industrial-grade 3D geometries — powered by physics-aware learning and linear-complexity attention.
+
+![LRQ-Solver Framework](assets/LRQ-Solver_v2.png)
+
+**LRQ-Solver** is a deep learning framework designed to solve large-scale partial differential equations (PDEs) on complex 3D geometries with unprecedented efficiency. Built upon two core innovations:
+
+- **PCLM (Physics-Coupled Learning Module)**: Embeds physical consistency into the model architecture, enabling robust generalization across unseen design configurations.
+- **LR-QA (Low-Rank Query Attention)**: Reduces attention complexity from $O(N^2)$ to $O(NC^2 + C^3)$ via covariance decomposition, enabling training on up to **2 million points** on a single GPU.
+
+## 📁 Dataset
+Dataset link: [kenalin/drivaerpp](https://www.modelscope.cn/datasets/kenalin/drivaerpp)
+```bash
+#To download the full dataset:
+modelscope download --dataset kenalin/drivaerpp
+
+#To download a specific file (for example README.md into a local folder named dir):
+modelscope download --dataset kenalin/drivaerpp README.md --local dir
+```
+
+## 📦 Model Weights
+
+Pre-trained model weights are available for download:
+
+- **LRQSolver_100000.zip**: Full model weights (Baidu Netdisk link: https://pan.baidu.com/s/1ZghF4w8TU5hYhS4RV7Po6w Password: k8mg)
+- **LRQSolver_1024.zip**: Lightweight model weights (Baidu Netdisk link: https://pan.baidu.com/s/1-NA_CSbUs8fukivIADyURg Password: qybq)
+
+✅ **Results**:
+- **38.9% error reduction** on DrivAer++ dataset  
+- **28.76% error reduction** on 3D Beam dataset  
+- **Up to 50× training speedup** over baseline methods  
+
+🔗 Code for reproducing state-of-the-art multi-configuration physics simulations.
+
+---
+
+## 📁 Repository Structure
+
+```text
+LRQ-Solver/
+├── configs/                # Training & model configuration files
+├── ppcfd/                  # Core solver modules & physics-integrated layers
+├── main_drivaer.py         # Entry point for DrivAer++ experiments
+├── main_beam.py            # Entry point for 3D Beam experiments
+├── run_LRQSOLVER_drivaer.sh# Shell script to run DrivAer++ pipeline
+├── run_LRQSOLVER_beam.sh   # Shell script to run 3D Beam pipeline
+├── visual_beam.py          # Visualization utilities for beam results
+├── drag_coefficient.py     # Post-processing for aerodynamic metrics
+├── requirements.txt        # Python dependencies
+├── .pre-commit-config.yaml # Pre-commit hooks for code quality
+└── README.md               # You are here!
+```
+
+## ⚙️ Quick Start
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/*anonymous*/LRQ-Solver.git  
+cd LRQ-Solver
+```
+
+2. **Install dependencies with uv**
+```bash
+uv sync
+
+# Optional visualization / web dependencies
+uv sync --extra vis
+uv sync --extra web
+```
+
+3. **Run an experiment**
+```bash
+#For DrivAer++ dataset
+bash run_LRQSolver_drivaer.sh
+
+#For 3D Beam dataset
+bash run_LRQSolver_beam.sh
+
+#Visualize results (e.g., beam)
+uv run python visual_beam.py checkpoint=./outputs/beam/model.pt
+```
+
+The Torch version saves checkpoints as `.pt`. Paddle `.pdparams` weights are not
+loaded directly by the Torch entry points.
+
+## Acknowledgements
+
+We sincerely thank the following open-source projects for their valuable contributions to this work:
+
+- [PaddleScience](https://github.com/PaddlePaddle/PaddleScience) – Baidu's scientific machine learning toolkit for physics-informed deep learning.
+- [DrivAerNet](https://github.com/Mohamedelrefaie/DrivAerNet) – The large-scale CFD dataset and benchmark from MIT.
+- [PaddleCFD](https://github.com/PaddlePaddle/PaddleCFD) – The PaddlePaddle-based framework for aerodynamic simulation and shape optimization.

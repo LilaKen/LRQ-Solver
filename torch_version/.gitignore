@@ -1,0 +1,10 @@
+/.venv/
+/output/
+/log/
+/data/
+__pycache__/
+*.py[cod]
+*.pt
+*.pth
+*.pdparams
+*.log
