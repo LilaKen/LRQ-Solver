@@ -4,6 +4,13 @@
 
 ![LRQ-Solver Framework](assets/LRQ-Solver_v2.png)
 
+## 📰 Publication
+
+Our paper has been accepted by *Computer-Aided Design* (Elsevier) and is available on ScienceDirect:
+
+**LRQ-Solver: A Transformer-Based Neural Operator for Fast and Accurate Solving of Large-scale 3D PDEs**  
+[Read the article on ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0010448526001211?dgcid=coauthor)
+
 **LRQ-Solver** is a deep learning framework designed to solve large-scale partial differential equations (PDEs) on complex 3D geometries with unprecedented efficiency. Built upon two core innovations:
 
 - **PCLM (Physics-Coupled Learning Module)**: Embeds physical consistency into the model architecture, enabling robust generalization across unseen design configurations.
@@ -31,7 +38,7 @@ Pre-trained model weights are available for download:
 - **28.76% error reduction** on 3D Beam dataset  
 - **Up to 50× training speedup** over baseline methods  
 
-🔗 Code for reproducing state-of-the-art multi-configuration physics simulations.
+🔗 Code for reproducing the results reported in our *Computer-Aided Design* article.
 
 ---
 
@@ -71,18 +78,36 @@ pip install -r requirements.txt
 run_LRQSOLVER_drivaer.sh
 
 #For 3D Beam dataset
-bash run_LRQSOLVER_beam.sh
+bash run_LRQSolver_beam.sh
 
 #Visualize results (e.g., beam)
 python visual_beam.py --checkpoint ./outputs/beam/model.pth
 ```
 
-
 ## Acknowledgements
 
 We sincerely thank the following open-source projects for their valuable contributions to this work:
 
-- [PaddleScience](https://github.com/PaddlePaddle/PaddleScience) – Baidu’s scientific machine learning toolkit for physics-informed deep learning.
+- [PaddleScience](https://github.com/PaddlePaddle/PaddleScience) – Baidu's scientific machine learning toolkit for physics-informed deep learning.
 - [DrivAerNet](https://github.com/Mohamedelrefaie/DrivAerNet) – The large-scale CFD dataset and benchmark from MIT.
 - [PaddleCFD](https://github.com/PaddlePaddle/PaddleCFD) – The PaddlePaddle-based framework for aerodynamic simulation and shape optimization.
 
+## 📚 Citation
+
+If you find LRQ-Solver useful in your research, please cite our paper:
+
+```bibtex
+@article{ZENG2026104151,
+  title = {LRQ-Solver: A transformer-based neural operator for fast and accurate solving of large-scale 3D PDEs},
+  journal = {Computer-Aided Design},
+  volume = {200},
+  pages = {104151},
+  year = {2026},
+  issn = {0010-4485},
+  doi = {10.1016/j.cad.2026.104151},
+  url = {https://www.sciencedirect.com/science/article/pii/S0010448526001211},
+  author = {Peijian Zeng and Guan Wang and Haohao Gu and Xiaoguang Hu and Tiezhu Gao and Zhuowei Wang and Aimin Yang and Xiaoyu Song},
+  keywords = {Computer-aided design, Aerodynamic drag coefficient, Deep learning, Three-dimensional geometry},
+  abstract = {Solving large-scale PDEs on complex three-dimensional geometries remains a central challenge in scientific and engineering computing, often due to expensive pre-processing stages and high computational overhead. We present Low-Rank Query-based PDE Solver (LRQ-Solver), a physics-integrated deep learning framework for efficient CAE simulations of complex three-dimensional geometries in CAD-driven design analysis. Built upon the Parameter-Conditioned Lagrangian Modeling (PCLM) that embeds physical consistency into the learning process and the Low-Rank Query Attention (LR-QA) module that reduces attention complexity from O(N2) to O(NC2+C3) via covariance decomposition, LRQ-Solver supports multi-configuration analysis within iterative design workflows. On two benchmark datasets, it achieves a 28.6% error reduction on DrivAerNet++ and 28.76% on the 3D Beam dataset, while supporting simulations with 2 million points under a 40 GB memory budget. These results indicate its potential for accelerating PDEs-based CAE tasks, such as aerodynamic drag estimation and structural stress analysis, in computational design pipelines. Code to reproduce the experiments is available at https://github.com/LilaKen/LRQ-Solver.}
+}
+```
